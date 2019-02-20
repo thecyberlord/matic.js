@@ -363,7 +363,7 @@ export default class Matic {
 
     const headerProof = await this.getHeaderProof(txProof.blockNumber, header)
 
-    const withdrawTx = this._withdrawManagerContract.methods.withdraw(
+    const withdrawTx = this._withdrawManagerContract.methods.withdrawTokens(
       header.number.toString(), // header block
       utils.bufferToHex(
         Buffer.concat(headerProof.proof.map(p => utils.toBuffer(p)))
@@ -488,17 +488,23 @@ export default class Matic {
   async _fillOptions(options, txObject, web3) {
     // delete chain id
     delete txObject.chainId
-    const gas = !web3.matic ? await web3.eth.getGasPrice() : 0
     const from = options.from || this.walletAddress
+    const value = options.value || 0
     if (!from) {
       throw new Error(
         '`from` required in options or set wallet using maticObject.wallet = <private key>'
       )
     }
 
+    const gas = !web3.matic ? await web3.eth.getGasPrice() : 0
+    const gasPrice1 = '7000000'
     const [gasLimit, gasPrice, nonce, chainId] = await Promise.all([
+      // !(options.gasLimit || options.gas)
+      //   ? await txObject.estimateGas({ from, value })
+      //   : options.gasLimit || options.gas,
+      gasPrice1,
       !(options.gasLimit || options.gas)
-        ? await txObject.estimateGas({ from, value: options.value })
+        ? '7000000'
         : options.gasLimit || options.gas,
       !options.gasPrice ? gas : options.gasPrice,
       !options.nonce

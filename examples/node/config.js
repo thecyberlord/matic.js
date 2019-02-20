@@ -1,11 +1,11 @@
 module.exports = {
-  MATIC_PROVIDER: 'https://testnet.matic.network',
-  PARENT_PROVIDER: 'https://kovan.infura.io/matic',
+  MATIC_PROVIDER: 'http://68.183.166.5:8545/',
+  PARENT_PROVIDER: 'https://ropsten.infura.io/matic',
   ROOTCHAIN_ADDRESS: '0xf3269cfcd3afade2c131dbbefa73c551b6655352',
   WITHDRAWMANAGER_ADDRESS: '0xcb88ec0b9f0b5c62c4f29bf17891c2f98b5f2523',
   DEPOSITMANAGER_ADDRESS: '0xe5d6b6591f9be0adb7b2547c03bc080e6a7e1289',
-  SYNCER_URL: 'https://eth-syncer.api.matic.network/api/v1',
-  WATCHER_URL: 'https://eth-watcher.api.matic.network/api/v1',
+  SYNCER_URL: 'https://matic-syncer.api.matic.network/api/v1',
+  WATCHER_URL: 'https://ropsten-watcher.api.matic.network/api/v1',
   MATICWETH_ADDRESS: '0xd27Ba7002CAa42C220F1Aa8aC8b9AD648E8301b0',
   PRIVATE_KEY:
     '0x03599966360596FFC19F0E3E98371BD115910107016D90D5E8427B661ECA47A0',
